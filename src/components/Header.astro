@@ -1,0 +1,86 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header>
+	<nav>
+		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<input type="checkbox" id="menu-toggle" class="menu-toggle">
+		<label for="menu-toggle" class="menu-icon">☰</label>
+		<div class="nav-links">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href="/projects">Projects</HeaderLink>
+			<HeaderLink href="/contact">Contact</HeaderLink>
+		</div>
+		<div class="social-links">
+			<a href="https://github.com/viveknaskar" target="_blank" title="GitHub">
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
+					<path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..."></path>
+				</svg>
+			</a>
+			<a href="https://x.com/vivek_naskar" target="_blank" title="𝕏">
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
+					<path fill="currentColor" d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334..."></path>
+				</svg>
+			</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	header {
+		background: #fff;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		padding: 1em 1.5em;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.5em;
+		font-weight: bold;
+	}
+	h2 a {
+		text-decoration: none;
+		color: #333;
+	}
+	.nav-links {
+		display: flex;
+		gap: 1em;
+	}
+	.nav-links a {
+		color: #555;
+		text-decoration: none;
+		padding: 0.5em 0;
+	}
+	.social-links {
+		display: flex;
+		gap: 0.75em;
+	}
+	.menu-toggle {
+		display: none;
+	}
+	.menu-icon {
+		display: none;
+		cursor: pointer;
+	}
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+			flex-direction: column;
+			position: absolute;
+			background: white;
+			top: 60px;
+			left: 0;
+			width: 100%;
+			padding: 1em 0;
+		}
+		.menu-toggle:checked + .menu-icon + .nav-links {
+			display: flex;
+		}
+		.menu-icon {
+			display: block;
+		}
+	}
+</style>
